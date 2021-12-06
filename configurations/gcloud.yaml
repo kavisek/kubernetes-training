@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcloud-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: gcloud-service
+  template:
+    metadata:
+      labels:
+        app: gcloud-service
+    spec:
+      containers:
+      - name: gcloud
+        image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+        command: ["sleep", "infinity"]
+        imagePullPolicy: "Always"
